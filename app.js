@@ -16,7 +16,11 @@ app.use('/css', express.static(path.join(__dirname, '/public/css')));
 app.use('/images', express.static(path.join(__dirname, '/public/images')));
 app.use('/js', express.static(path.join(__dirname, '/public/js')));
 
-app.get('/*', function (req, res) {
+app.get('/TakeMyVote', function (req, res) {
+    res.sendFile(path.join(__dirname, '/public/html/my_vote.html'));
+});
+
+app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/html/index.html'));
 });
 

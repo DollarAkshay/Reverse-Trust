@@ -22,34 +22,34 @@
                 <h2 class="small-caps"> Reverse Trust </h2>
             </div>
             <div class="d-flex justify-content-center">
-                <h5 class="small-caps"> Come be a part of my circle. This app uses your reddit credentials to join my circle. </h5>
+                <h5 class="small-caps"> Want me to join your circle and make sure that it is trusted ? </h5>
             </div>
             <div class="d-flex justify-content-center">
-                <h5 class="small-caps"> Uses a backend Node.js server makes API calls on your behalf. </h5>
+                <h5 class="small-caps"> Uses a backend Node.js server makes API calls on my behalf. </h5>
             </div>
             <div class="d-flex justify-content-center">
-                <h5 class="small-caps"> Your credentials arent stored anywhere I promise. Come join my circle</h5>
+                <h5 class="small-caps"> Enter your key and circle id below</h5>
             </div>
             <div class="d-flex justify-content-center">
                 <a href="https://github.com" class="icon-github icon-btn"></a>
             </div>
             <div class="d-flex justify-content-center">
-                <h4>Want me to join your circle ? Go
-                    <a href="TakeMyVote">here</a>
+                <h4>Want to join my circle ? Go
+                    <a href="/">here</a>
                 </h4>
             </div>
         </div>
 
         <div class="d-flex justify-content-center">
-            <div id="login-wrapper" class="col d-flex flex-column mt-3 p-4 md-whiteframe-4dp">
+            <div id="login-wrapper" class="col d-flex flex-column mt-5 p-4 md-whiteframe-4dp">
                 <form id="login-form" action="/">
                     <div class="d-flex align-content-stretch">
-                        <i class="material-icons mr-3">person</i>
-                        <input id="username-input" class="col m-2 p-2 input-field" name="emadsf" type="text" placeholder="username">
+                        <i class="material-icons mr-3">data_usage</i>
+                        <input id="circleid-input" class="col m-2 p-2 input-field" name="circleid" type="text" placeholder="CircleID like 89d4er...">
                     </div>
                     <div class="d-flex align-content-stretch">
                         <i class="material-icons mr-3">vpn_key</i>
-                        <input id="password-input" class="col m-2 p-2 input-field" name="password" type="password" placeholder="password">
+                        <input id="key-input" class="col m-2 p-2 input-field" name="key" type="text" placeholder="Unlock Key">
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <button id="trust-button" type="button" class="btn btn-primary">I trust you</button>
@@ -62,7 +62,7 @@
             <div class="d-flex justify-content-center">
                 <div id="api-progress" class="loader"></div>
             </div>
-            <div>
+            <div class="d-flex justify-content-center">
                 <h4 id="api-status">Done</h4>
             </div>
 
@@ -75,19 +75,19 @@
 
                 $("#trust-button").click(function () {
 
-                    var username = $('#username-input').val();
-                    var password = $('#password-input').val();
+                    var circleid = $('#circleid-input').val();
+                    var key = $('#key-input').val();
                     console.log("Clicked");
                     $("#api-progress").fadeIn();
                     $("#api-status").html("");
 
                     $.ajax({
-                            url: "http://localhost:9000/circleoftrust",
+                            url: "http://localhost:9000/JoinCircle",
                             type: 'POST',
                             contentType: 'application/json',
                             data: JSON.stringify({
-                                'username': username,
-                                'password': password
+                                'circleID': circleid,
+                                'key': key
                             }),
                             dataType: 'json',
                         })
@@ -97,8 +97,7 @@
                             $("#api-progress").fadeOut();
                         })
                         .fail(function (response) {
-                            var data = response.responseText;
-                            console.log(data);
+                            var data = JSON.parse(response.responseText)
                             $("#api-status").html(data['status_msg']);
                             $("#api-status").fadeIn();
                             $("#api-progress").fadeOut();
