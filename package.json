@@ -1,0 +1,38 @@
+{
+    "name": "reverse-trust",
+    "version": "1.0.0",
+    "description": "A program for r/circleoftrust",
+    "main": "app.js",
+    "engines": {
+        "node": ">=6.10.0"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "test": "nodemon app.js"
+    },
+    "dependencies": {
+        "angular": "^1.6.9",
+        "body-parser": "^1.18.2",
+        "bootstrap": "^4.0.0",
+        "cookie-parser": "^1.4.3",
+        "express": "^4.16.3",
+        "jquery": "^3.3.1",
+        "request": "^2.85.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DollarAkshay/Reverse-Trust.git"
+    },
+    "keywords": [
+        "r/CircleofTrust"
+    ],
+    "author": "$Dollar Akshay$",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/DollarAkshay/Reverse-Trust/issues"
+    },
+    "homepage": "https://github.com/DollarAkshay/Reverse-Trust#readme"
+}

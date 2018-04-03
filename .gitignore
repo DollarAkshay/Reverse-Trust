@@ -1,0 +1,6 @@
+
+node_modules/
+
+# Windows Files
+*.ini
+server/server.js
